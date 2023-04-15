@@ -1,48 +1,47 @@
 //* Model
-const { Materia } = require('../models/materia.model');
+const { Asignatura } = require('../models/asignatura.model');
 
 //* Utils
 const { catchAsync } = require('../utils/catchAsync.utils');
 
 const getAllMaterias = catchAsync(async (req, res) => {
-  const materias = await Materia.findAll({
+  const asignaturas = await Asignatura.findAll({
     where: { status: 'activo' },
-    attributes: ['id', 'nombre', 'precio'],
+    attributes: ['id', 'nombre'],
   });
 
   res.status(200).json({
     status: 'Success',
-    data: { materias },
+    data: { asignaturas },
   });
 });
 
 const getMateriasbyId = catchAsync(async (req, res) => {
-  const { materia } = req;
+  const { asignatura } = req;
 
   res.status(200).json({
     status: 'Success',
-    data: { materia },
+    data: { asignatura },
   });
 });
 
 const crearMaterias = catchAsync(async (req, res) => {
-  const { nombre, precio } = req.body;
+  const { nombre } = req.body;
 
-  const newMateria = await Materia.create({ nombre, precio });
+  const newAsignatura = await Asignatura.create({ nombre });
 
   res.status(201).json({
     status: 'Success',
-    data: { newMateria },
+    data: { newAsignatura },
   });
 });
 
 const editarMaterias = catchAsync(async (req, res) => {
-  const { materia } = req;
-  const { nombre, precio } = req.body;
+  const { asignatura } = req;
+  const { nombre } = req.body;
 
-  await materia.update({
+  await asignatura.update({
     nombre,
-    precio,
   });
 
   res.status(204).json({
@@ -51,9 +50,9 @@ const editarMaterias = catchAsync(async (req, res) => {
 });
 
 const borrarMaterias = catchAsync(async (req, res) => {
-  const { materia } = req;
+  const { asignatura } = req;
 
-  await materia.update({
+  await asignatura.update({
     status: 'inactivo',
   });
 

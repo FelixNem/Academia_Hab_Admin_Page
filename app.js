@@ -3,7 +3,8 @@ const express = require('express');
 //* Routers
 const { empleadosRoutes } = require('./routes/empleado.routes');
 const { estudientesRoutes } = require('./routes/estudiente.routes');
-const { materiasRoutes } = require('./routes/materia.routes');
+const { materiasRoutes } = require('./routes/asignatura.routes');
+const { gruposRoutes } = require('./routes/grupo.routes');
 
 //! controller
 const { globalErrorHandler } = require('./controllers/error.controllers');
@@ -13,9 +14,12 @@ const app = express();
 app.use(express.json());
 
 //* Endponits
-app.use('/api/v1/empleados', empleadosRoutes);
-app.use('/api/v1/estudiantes', estudientesRoutes);
-app.use('/api/v1/materias', materiasRoutes);
+const url = '/api/v1';
+
+app.use(`${url}/empleados`, empleadosRoutes);
+app.use(`${url}/estudiantes`, estudientesRoutes);
+app.use(`${url}/materias`, materiasRoutes);
+app.use(`${url}/grupos`, gruposRoutes);
 
 //! GlobalErrorHandler
 app.use(globalErrorHandler);

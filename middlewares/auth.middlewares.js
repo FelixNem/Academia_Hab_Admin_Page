@@ -45,6 +45,17 @@ const protectSesion = catchAsync(async (req, res, next) => {
   next();
 });
 
+//TODO: permitir crear el primer usuario sin ser admi
+const isOneAdmin = catchAsync(async (req, res, next) => {
+  const empleados = await Empleado.findAll({
+    where: { status: 'activo' },
+  });
+
+  if (empleados.length > 1) {
+    next();
+  }
+});
+
 const protectAdminAccount = (req, res, next) => {
   const { sessionEmpleado } = req;
 

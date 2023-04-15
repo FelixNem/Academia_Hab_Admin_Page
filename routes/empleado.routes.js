@@ -5,7 +5,7 @@ const {
   getAllEmpleados,
   crearEmpleado,
   editarEmpleado,
-  borrarEmplado,
+  borrarEmpleado,
   login,
 } = require('../controllers/empleado.controllers');
 
@@ -23,9 +23,9 @@ const empleadosRoutes = express.Router();
 empleadosRoutes.get('/', getAllEmpleados);
 empleadosRoutes.post('/login', login);
 
+empleadosRoutes.post('/', crearEmpleado);
 empleadosRoutes.use(protectSesion);
-empleadosRoutes.post('/', crearEmpleadoValid, crearEmpleado);
 empleadosRoutes.patch('/:id', editarEmpleadoValid, editarEmpleado);
-empleadosRoutes.delete('/:id', borrarEmpladoValid, borrarEmplado);
+empleadosRoutes.delete('/:id', borrarEmpladoValid, borrarEmpleado);
 
 module.exports = { empleadosRoutes };

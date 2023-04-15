@@ -1,7 +1,7 @@
 const { body, validationResult } = require('express-validator');
 
 //* Model
-const { Materia } = require('../models/materia.model');
+const { Asignatura } = require('../models/asignatura.model');
 
 //* utils
 const { catchAsync } = require('../utils/catchAsync.utils');
@@ -11,15 +11,15 @@ const { protectAdminAccount } = require('./auth.middlewares');
 const materiaExiste = catchAsync(async (req, res, next) => {
   const { id } = req.params;
 
-  const materia = await Materia.findOne({
+  const asignatura = await Asignatura.findOne({
     where: { id, status: 'activo' },
   });
 
-  if (!materia) {
+  if (!asignatura) {
     return next(new AppError('Materia no encontrada', 404));
   }
 
-  req.materia = materia;
+  req.asignatura = asignatura;
 
   next();
 });
@@ -48,7 +48,6 @@ const crearMateriaValida = [
     .withMessage('Nombre no puede estar vacio')
     .isLength({ min: 3 })
     .withMessage('Nombre debe ser minimo 3 caracteres'),
-  body('precio').isNumeric(),
   checkValidations,
 ];
 
@@ -62,7 +61,6 @@ const editarMateriaValida = [
     .withMessage('Nombre no puede estar vacio')
     .isLength({ min: 3 })
     .withMessage('Nombre debe ser minimo 3 caracteres'),
-  body('precio').isNumeric(),
   checkValidations,
 ];
 

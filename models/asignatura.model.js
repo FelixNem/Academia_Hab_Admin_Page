@@ -1,6 +1,6 @@
 const { db, DataTypes } = require('../utils/db.utils');
 
-const Materia = db.define('materia', {
+const Asignatura = db.define('asignatura', {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -11,14 +11,10 @@ const Materia = db.define('materia', {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  precio: {
-    type: DataTypes.REAL,
-    allowNull: false,
-  },
   status: {
     type: DataTypes.ENUM('activo', 'inactivo'),
     defaultValue: 'activo',
   },
 });
 
-module.exports = { Materia };
+module.exports = { Asignatura };

@@ -23,6 +23,30 @@ const getAllEmpleados = catchAsync(async (req, res, next) => {
   });
 });
 
+const getAllAdmins = catchAsync(async (req, res) => {
+  const admins = await Empleado.findAll({
+    where: { status: 'activo', rol: 'admin' },
+    attributes: ['id', 'nombre', 'nickname', 'rol'],
+  });
+
+  res.status(200).json({
+    status: 'Succes',
+    data: { admins },
+  });
+});
+
+const getAllProfes = catchAsync(async (req, res) => {
+  const admins = await Empleado.findAll({
+    where: { status: 'activo', rol: 'profe' },
+    attributes: ['id', 'nombre', 'nickname', 'rol'],
+  });
+
+  res.status(200).json({
+    status: 'Succes',
+    data: { admins },
+  });
+});
+
 const crearEmpleado = catchAsync(async (req, res, next) => {
   const { nombre, nickname, password, rol } = req.body;
   //*cifrando password
@@ -57,7 +81,7 @@ const editarEmpleado = catchAsync(async (req, res, next) => {
   });
 });
 
-const borrarEmplado = catchAsync(async (req, res, next) => {
+const borrarEmpleado = catchAsync(async (req, res, next) => {
   const { empleado } = req;
 
   await empleado.update({
@@ -95,8 +119,10 @@ const login = catchAsync(async (req, res, next) => {
 
 module.exports = {
   getAllEmpleados,
+  getAllAdmins,
+  getAllProfes,
   crearEmpleado,
   editarEmpleado,
-  borrarEmplado,
+  borrarEmpleado,
   login,
 };

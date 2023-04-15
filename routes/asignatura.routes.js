@@ -27,6 +27,6 @@ materiasRoutes.get('/:id', traerMateriaValida, getMateriasbyId);
 materiasRoutes.use(protectSesion);
 materiasRoutes.post('/', crearMateriaValida, crearMaterias);
 materiasRoutes.patch('/:id', editarMateriaValida, editarMaterias);
-materiasRoutes.delete('/:id', borrarMateriaValida, borrarMaterias)
+materiasRoutes.delete('/:id', borrarMateriaValida, borrarMaterias);
 
 module.exports = { materiasRoutes };
