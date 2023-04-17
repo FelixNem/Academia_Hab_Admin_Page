@@ -19,7 +19,7 @@ const Estudiante = db.define('estudiante', {
     type: DataTypes.STRING,
     allowNull: true,
   },
-  totalPagado: {
+  montoBruto: {
     type: DataTypes.REAL,
     defaultValue: 0,
   },
@@ -29,7 +29,11 @@ const Estudiante = db.define('estudiante', {
   },
   totalPagar: {
     type: DataTypes.REAL,
-    allowNull: false,
+    defaultValue: 0,
+  },
+  totalPagado: {
+    type: DataTypes.REAL,
+    defaultValue: 0,
   },
   status: {
     type: DataTypes.ENUM('activo', 'inactivo'),

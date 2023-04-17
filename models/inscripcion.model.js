@@ -15,6 +15,10 @@ const Inscripcion = db.define('inscripcion', {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
+  status: {
+    type: DataTypes.ENUM('activo', 'inactivo'),
+    defaultValue: 'activo',
+  },
 });
 
 module.exports = { Inscripcion };

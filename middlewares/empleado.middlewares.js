@@ -41,7 +41,7 @@ const checkValidations = (req, res, next) => {
 };
 
 const crearEmpleadoValid = [
-  protectAdminAccount,
+  // protectAdminAccount,
   body('nombre')
     .isString()
     .withMessage('Nombre debe ser un String')

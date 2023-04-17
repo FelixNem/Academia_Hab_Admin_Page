@@ -5,6 +5,7 @@ const { empleadosRoutes } = require('./routes/empleado.routes');
 const { estudientesRoutes } = require('./routes/estudiente.routes');
 const { materiasRoutes } = require('./routes/asignatura.routes');
 const { gruposRoutes } = require('./routes/grupo.routes');
+const { inscripcionesRoutes } = require('./routes/inscripciones.routes');
 
 //! controller
 const { globalErrorHandler } = require('./controllers/error.controllers');
@@ -20,6 +21,7 @@ app.use(`${url}/empleados`, empleadosRoutes);
 app.use(`${url}/estudiantes`, estudientesRoutes);
 app.use(`${url}/materias`, materiasRoutes);
 app.use(`${url}/grupos`, gruposRoutes);
+app.use(`${url}/inscripciones`, inscripcionesRoutes);
 
 //! GlobalErrorHandler
 app.use(globalErrorHandler);

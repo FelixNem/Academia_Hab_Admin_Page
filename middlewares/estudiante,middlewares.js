@@ -47,9 +47,10 @@ const crearEstudianteValido = [
   body('nombre').isString().notEmpty().isLength({ min: 4 }),
   body('correoContacto').isEmail(),
   body('telContacto').notEmpty().isLength({ min: 10, max: 10 }),
-  body('totalPagado').isNumeric(),
-  body('descuento').isNumeric(),
-  body('totalPagar').isNumeric(),
+  // body('montoBruto').isNumeric(),
+  // body('totalPagado').isNumeric(),
+  // body('descuento').isNumeric(),
+  // body('totalPagar').isNumeric(),
   checkValidations,
 ];
 

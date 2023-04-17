@@ -10,10 +10,10 @@ const getAllEstudiantes = catchAsync(async (req, res) => {
     attributes: [
       'id',
       'nombre',
-      'totalPagado',
+      'montoBruto',
+      'descuento',
       'totalPagar',
-      'telContacto',
-      'correoContacto',
+      'totalPagado',
     ],
   });
 
@@ -28,18 +28,20 @@ const crearEstudiantes = catchAsync(async (req, res) => {
     nombre,
     correoContacto,
     telContacto,
-    totalPagado,
+    montoBruto,
     descuento,
     totalPagar,
+    totalPagado,
   } = req.body;
 
   const newEstudiante = await Estudiante.create({
     nombre,
     correoContacto,
     telContacto,
-    totalPagado,
+    montoBruto,
     descuento,
     totalPagar,
+    totalPagado,
   });
 
   res.status(201).json({

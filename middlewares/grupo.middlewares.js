@@ -1,6 +1,6 @@
 const { body, validationResult } = require('express-validator');
 
-//* Model
+//* Models
 const { Empleado } = require('../models/empleado.model');
 const { Asignatura } = require('../models/asignatura.model');
 
@@ -66,6 +66,7 @@ const crearGrupoValido = [
     .withMessage('Nombre debe ser minimo 3 caracteres'),
   body('totalDias').isNumeric(),
   body('costoTotal').isNumeric(),
+  checkValidations,
 ];
 
 module.exports = { crearGrupoValido };

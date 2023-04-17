@@ -23,7 +23,7 @@ const empleadosRoutes = express.Router();
 empleadosRoutes.get('/', getAllEmpleados);
 empleadosRoutes.post('/login', login);
 
-empleadosRoutes.post('/', crearEmpleado);
+empleadosRoutes.post('/', crearEmpleadoValid, crearEmpleado);
 empleadosRoutes.use(protectSesion);
 empleadosRoutes.patch('/:id', editarEmpleadoValid, editarEmpleado);
 empleadosRoutes.delete('/:id', borrarEmpladoValid, borrarEmpleado);

@@ -27,7 +27,10 @@ const Grupo = db.define('grupo', {
     type: DataTypes.REAL,
     allowNull: false,
   },
-  //TODO: agregar status para el softdelete
+  status: {
+    type: DataTypes.ENUM('activo', 'inactivo'),
+    defaultValue: 'activo',
+  },
 });
 
 module.exports = { Grupo };
